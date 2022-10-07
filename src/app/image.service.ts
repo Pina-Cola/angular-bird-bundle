@@ -20,4 +20,11 @@ export class ImageService {
   ];
 
   constructor() { }
+
+  getImage(){
+    return this.image_array;
+  }
+
+
+
 }

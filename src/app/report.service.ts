@@ -18,4 +18,11 @@ export class ReportService {
   ];
 
   constructor() { }
+
+  getReport(){
+    return this.report_array;
+  }
+
+
+
 }

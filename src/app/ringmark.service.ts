@@ -30,4 +30,11 @@ export class RingmarkService {
   ];
 
   constructor() { }
+
+  getRingmark(){
+    return this.ringmark_array;
+  }
+
+
+
 }

@@ -22,4 +22,12 @@ export class SampleService {
   ];
 
   constructor() { }
+
+  getSample(){
+    return this.sample_array;
+  }
+
+
+
+
 }

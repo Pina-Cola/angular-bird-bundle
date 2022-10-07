@@ -26,4 +26,11 @@ export class VideoService {
   ];
 
   constructor() { }
+
+  getVideo(){
+    return this.sample_array;
+  }
+
+
+
 }

@@ -26,4 +26,10 @@ export class NestService {
 
 
   constructor() { }
+
+  getNest(){
+    return this.nest_array;
+  }
+
+
 }
