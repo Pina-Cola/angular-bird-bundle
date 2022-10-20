@@ -6,3 +6,26 @@
 .textContainer{
     margin-left: 1%;
 }
+
+.birdImage{
+    height: 50px;
+}
+
+.flexContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+}
+
+.flexContentPic{
+    width: 80px;
+    margin-left: 1em;
+}
+
+.flexContentText{
+    width: 150px;
+    margin-left: 1em;
+}
