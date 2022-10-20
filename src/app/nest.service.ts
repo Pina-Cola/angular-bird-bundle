@@ -1,17 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Nest } from './nest';
-
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class NestService {
 
   configUrl = 'http://localhost:5000/api';
+
+  // jsonObject: JSON;
 
   /* nest_array: Nest[] = [
     {    
@@ -33,14 +36,15 @@ export class NestService {
 
   constructor(private http: HttpClient) {
     this.getNests();
+    // this.jsonObject = <JSON><unknown>this.getNests;
    }
 
 
   getNests() {
     console.log("Nestaufruf");
-    console.log(this.http.get(this.configUrl));
-    const nests = this.http.get(this.configUrl);
-    return nests;
+    this.http.get(this.configUrl).subscribe(data => {
+      console.log(data)});
+    return this.http.get<Nest>(this.configUrl).pipe(map((response: any) => response.json()));
   }
 
 
