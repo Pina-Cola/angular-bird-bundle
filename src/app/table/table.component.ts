@@ -1,14 +1,17 @@
+import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { DataSource } from '@angular/cdk/collections';
+import { NestService } from '../nest.service';
+import { Nest } from '../nest';
 
 
-export interface Bird {
+
+/* export interface Bird {
   name: string;
   position: number;
   weight: number;
   ring: boolean;
-}
+} 
 
 const ELEMENT_DATA: Bird[] = [
   {position: 1, name: 'Dove', weight: 1.0079, ring: true},
@@ -21,7 +24,9 @@ const ELEMENT_DATA: Bird[] = [
   {position: 8, name: 'Amsel', weight: 15.9994, ring: true},
   {position: 9, name: 'Drossel', weight: 18.9984, ring: true},
   {position: 10, name: 'Fink', weight: 20.1797, ring: true},
-];
+]; */
+
+const ELEMENT_DATA: Nest[] = [];
 
 
 @Component({
@@ -31,39 +36,40 @@ const ELEMENT_DATA: Bird[] = [
 })
 export class TableComponent {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'ring'];
+  displayedColumns: string[] = ['Nest ID', 'Place', 'Year', 'Link to place'];
   dataToDisplay = [...ELEMENT_DATA];
 
   dataSource = new ExampleDataSource(this.dataToDisplay);
 
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataToDisplay = [...this.dataToDisplay, ELEMENT_DATA[randomElementIndex]];
-    this.dataSource.setData(this.dataToDisplay);
+
+  constructor(private nestService: NestService){
+    this.getNests();
   }
 
-  removeData() {
-    this.dataToDisplay = this.dataToDisplay.slice(0, -1);
-    this.dataSource.setData(this.dataToDisplay);
+  nests: Nest[] = [];
+
+
+  getNests(): void {
+    console.log(this.nestService.getNests().subscribe());
   }
 
 }
 
-class ExampleDataSource extends DataSource<Bird> {
-  private _dataStream = new ReplaySubject<Bird[]>();
+class ExampleDataSource extends DataSource<Nest> {
+  private _dataStream = new ReplaySubject<Nest[]>();
 
-  constructor(initialData: Bird[]) {
+  constructor(initialData: Nest[]) {
     super();
     this.setData(initialData);
   }
 
-  connect(): Observable<Bird[]> {
+  connect(): Observable<Nest[]> {
     return this._dataStream;
   }
 
   disconnect() {}
 
-  setData(data: Bird[]) {
+  setData(data: Nest[]) {
     this._dataStream.next(data);
   }
 }
