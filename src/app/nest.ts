@@ -1,7 +1,6 @@
 export interface Nest {
     nest_id: string;
     place: string;
-    year: number;
+    // year: string;
     link: string;
-    // crop: string;
 }
