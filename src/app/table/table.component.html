@@ -1,6 +1,6 @@
 <div class="demo-button-container">
 
-<button mat-raised-button class="nest-button">
+<button mat-raised-button (click)="fetchNest()" class="nest-button">
     List of all Nests
   </button>
 </div> 
@@ -9,7 +9,7 @@
 
     <ng-container matColumnDef="nest_id">
       <th mat-header-cell *matHeaderCellDef>Nest ID</th>
-      <td mat-cell *matCellDef="let element">{{element.nest_id}</td>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
     </ng-container>
   
     <ng-container matColumnDef="place">
@@ -19,7 +19,7 @@
   
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef>Link to place</th>
-      <td mat-cell *matCellDef="let element">{{element.link}}</td>
+      <td mat-cell *matCellDef="let element">{{element.maps_link}}</td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

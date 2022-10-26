@@ -10,10 +10,6 @@ import { Nest } from '../nest';
 
 
 
-
-// const ELEMENT_DATA: Nest[] = [];
-
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -21,7 +17,7 @@ import { Nest } from '../nest';
 })
 export class TableComponent{
 
-  listNests!: any[];
+  listNests!: Nest[];
 
   constructor(private nestService: NestService){
 
@@ -35,7 +31,7 @@ export class TableComponent{
 
   fetchNest(){
     this.nestService.getNests().subscribe( data =>{
-      this.listNests = data
+      this.listNests = data.nests
       this.dataSource = new MatTableDataSource(this.listNests)
       console.log('list of nests', this.listNests);
       console.log(this.dataSource);
